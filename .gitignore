@@ -46,6 +46,7 @@ $RECYCLE.BIN/
 .env
 .vscode
 .venv
-__pycache__
+__pycache__/
 venv/
 env/
+*sqlite3
