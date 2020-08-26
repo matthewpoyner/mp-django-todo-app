@@ -16,10 +16,12 @@ if path.exists("env.py"):
     import env
 import dj_database_url
 
-if os.environ.get('DEVELOPMENT'):
-    development = True
-else:
-    development = False
+development = os.environ.get('DEVELOPMENT',false)
+
+# if os.environ.get('DEVELOPMENT'):
+#     development = True
+# else:
+#     development = False
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
