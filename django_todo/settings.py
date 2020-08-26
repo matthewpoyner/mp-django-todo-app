@@ -16,7 +16,7 @@ if path.exists("env.py"):
     import env
 import dj_database_url
 
-if os.environ.get("DEVELOPMENT"):
+if os.environ.get('DEVELOPMENT'):
     development = True
 else:
     development = False
