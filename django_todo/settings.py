@@ -11,9 +11,15 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from os import path
+if path.exists("env.py"):
+    import env
 import dj_database_url
 
-development = os.environ.get('DEVELOPMENT', False)
+if os.environ.get("DEVELOPMENT"):
+    development = True
+else:
+    development = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +35,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'hb!tm$zcl(l15h^%&+6(t_kw-6_a-3-%ua1la
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = [os.environ.get('localhost', '127.0.0.1')]
+    ALLOWED_HOSTS = [os.environ.get('LOCALHOST')]
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
@@ -82,7 +88,7 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
